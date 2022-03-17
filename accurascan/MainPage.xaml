@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             iOS:Page.UseSafeArea="true"
+             x:Class="accurascan.MainPage">
+
+    <StackLayout BackgroundColor="#White">
+        <Frame BackgroundColor="#d22c39" Padding="18" CornerRadius="0">
+            <Label Text="Accurs Scan" HorizontalTextAlignment="Center" TextColor="White" FontSize="20" FontAttributes="Bold" />
+        </Frame>
+        <ScrollView BackgroundColor="White">
+            <StackLayout Padding="15">
+                <!--Result view will render fom here-->
+                <StackLayout Margin="5" x:Name="viewResult" IsVisible="false">
+                    <StackLayout x:Name="viewFace">
+                        <StackLayout x:Name="viewProfile" Orientation="Horizontal" HorizontalOptions="Center">
+                            <Image x:Name="imgProfile" Aspect="AspectFill" BackgroundColor="LightGray" HeightRequest="120" WidthRequest="80"/>
+                            <Image x:Name="imgDetectProfile" Aspect="AspectFill" IsVisible="false" BackgroundColor="LightGray" HeightRequest="120" WidthRequest="80"/>
+                        </StackLayout>
+                        <StackLayout Margin="0, 5, 0, 0" Orientation="Horizontal" HorizontalOptions="Center">
+                            <Button BackgroundColor="#d22c39" Clicked="OnStartLivenessClick" Text="LIVENESS" TextColor="White" FontSize="13" FontAttributes="Bold" Margin="0, 10, 0, 0" WidthRequest="120"/>
+                            <Button BackgroundColor="#d22c39" Clicked="OnStartFaceMatchClick" Text="FACE MATCH" TextColor="White" FontSize="13" FontAttributes="Bold" Margin="0, 10, 0, 0" WidthRequest="120"/> 
+                        </StackLayout>
+                        <StackLayout x:Name="viewScore" IsVisible="false" Margin="0, 5, 0, 0" Orientation="Horizontal" HorizontalOptions="Center">
+                            <Label x:Name="lblLiveness" Text="0%" HorizontalTextAlignment="Center" TextColor="Black" FontSize="17" FontAttributes="Bold" WidthRequest="120" />
+                            <Label x:Name="lblFaceMatch" Text="0%" HorizontalTextAlignment="Center" TextColor="Black" FontSize="17" FontAttributes="Bold" WidthRequest="120" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout x:Name="viewData" Margin="0, 5, 0, 0">
+                        <!--Dynamic view here-->
+                    </StackLayout>
+                    <Button BackgroundColor="#d22c39" Clicked="OnCloseResultClick" Text="CLOSE" TextColor="White" FontSize="13" FontAttributes="Bold" Margin="0, 10, 0, 0" WidthRequest="120"/> 
+                </StackLayout>
+                <StackLayout x:Name="viewMain" IsVisible="false">
+                    <!--OCR view-->
+                    <Frame x:Name="viewOCR" BackgroundColor="White" Padding="10" CornerRadius="10" IsVisible="false">
+                        <StackLayout Margin="5">
+                            <Label Text="Scan OCR Documents" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontAttributes="Bold" />
+                            <Picker x:Name="ocrCountry" Title="Select country" SelectedIndexChanged="OnCountryIndexChanged" HeightRequest="50" Margin="0, 10, 0, 0"  />
+                            <Picker x:Name="ocrCard" Title="Select card" SelectedIndexChanged="OnCardTypeIndexChanged" HeightRequest="50" Margin="0, 10, 0, 0"/>
+                            <Button x:Name="startOCR" Clicked="OnStartOCRClick" BackgroundColor="#d22c39" Text="START SCAN" TextColor="White" FontSize="18" FontAttributes="Bold" Margin="0, 15, 0, 0"/> 
+                        </StackLayout>
+                    </Frame>
+                    <!--MRZ view-->
+                    <Frame x:Name="viewMRZ" BackgroundColor="White" Padding="10" CornerRadius="10" IsVisible="false">
+                        <StackLayout Margin="5">
+                            <Label Text="Scan MRZ Documents" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontAttributes="Bold" />
+                            <Picker x:Name="mrzType" Title="Select MRZ type" SelectedIndexChanged="OnMRZTypeIndexChanged" HeightRequest="50"  Margin="0, 10, 0, 0"  />
+                            <Button x:Name="startMRZ" Clicked="OnStartMRZClick" BackgroundColor="#d22c39" Text="START SCAN" TextColor="White" FontSize="18" FontAttributes="Bold" Margin="0, 15, 0, 0"/> 
+                        </StackLayout>
+                    </Frame>
+                    <!--Barcode view-->
+                    <Frame x:Name="viewBarcode" BackgroundColor="White" Padding="10" CornerRadius="10" IsVisible="false">
+                        <StackLayout Margin="5">
+                            <Label Text="Scan Barcode" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontAttributes="Bold" />
+                            <Picker x:Name="barcodeType" Title="Select barcode type" SelectedIndexChanged="OnBarcodeTypeIndexChanged" HeightRequest="50" Margin="0, 10, 0, 0"  />
+                            <Button x:Name="startBarcode" Clicked="OnStartBarcodeClick" BackgroundColor="#d22c39" Text="START SCAN" TextColor="White" FontSize="18" FontAttributes="Bold" Margin="0, 15, 0, 0"/> 
+                        </StackLayout>
+                    </Frame>
+                    <!--Bank card view-->
+                    <Frame x:Name="viewBankCard" BackgroundColor="White" Padding="10" CornerRadius="10" IsVisible="false">
+                        <StackLayout Margin="5">
+                            <Label Text="Scan Bank Cards" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontAttributes="Bold" />
+                            <Label Text="You can scan any bank card here by tap on 'START SCAN' button." HorizontalTextAlignment="Center" TextColor="Black" FontSize="15" />
+                            <Button x:Name="startBankCard" Clicked="OnStartBankCardClick" BackgroundColor="#d22c39" Text="START SCAN" TextColor="White" FontSize="18" FontAttributes="Bold" Margin="0, 10, 0, 0"/> 
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout x:Name="viewLoading">
+                    <ActivityIndicator Color="#d22c39" IsRunning="true" />
+                </StackLayout>
+                <StackLayout x:Name="viewInvalidLicense" IsVisible="false">
+                    <Label Text="Please provide valid scanning license." HorizontalTextAlignment="Center" TextColor="Black" FontSize="15" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</ContentPage>

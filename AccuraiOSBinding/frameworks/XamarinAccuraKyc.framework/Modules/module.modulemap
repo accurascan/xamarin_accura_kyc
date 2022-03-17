@@ -1,0 +1,11 @@
+framework module XamarinAccuraKyc {
+  umbrella header "XamarinAccuraKyc.h"
+
+  export *
+  module * { export * }
+}
+
+module XamarinAccuraKyc.Swift {
+    header "XamarinAccuraKyc-Swift.h"
+    requires objc
+}

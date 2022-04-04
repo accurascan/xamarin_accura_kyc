@@ -351,7 +351,7 @@ namespace accurascan
                                             FontSize= 15,
                                             WidthRequest = 150,
                                             FontAttributes= FontAttributes.Bold,
-                                            Text = data.Key.ToString(),
+                                            Text = getLabel(data.Key.ToString()),
                                         },
                                         new Label
                                         {
@@ -394,7 +394,7 @@ namespace accurascan
                                             FontSize= 15,
                                             WidthRequest = 150,
                                             FontAttributes= FontAttributes.Bold,
-                                            Text = data.Key.ToString(),
+                                            Text = getLabel(data.Key.ToString()),
                                         },
                                         new Label
                                         {
@@ -461,6 +461,102 @@ namespace accurascan
                 }
             }
 
+        }
+
+        public static String getLabel(string key)
+        {
+            var lableText = "";
+            switch (key)
+            {
+                case "mrz":
+                    lableText += "MRZ";
+                    break;
+                case "placeOfBirth":
+                    lableText += "Place Of Birth";
+                    break;
+                case "retval":
+                    lableText += "Retval";
+                    break;
+                case "givenNames":
+                    lableText += "First Name";
+                    break;
+                case "country":
+                    lableText += "Country";
+                    break;
+                case "surName":
+                    lableText += "Last Name";
+                    break;
+                case "expirationDate":
+                    lableText += "Date of Expiry";
+                    break;
+                case "passportType":
+                    lableText += "Document Type";
+                    break;
+                case "personalNumber":
+                    lableText += "Other ID";
+                    break;
+                case "correctBirthChecksum":
+                    lableText += "Correct Birth Check No.";
+                    break;
+                case "correctSecondrowChecksum":
+                    lableText += "Correct Second Row Check No.";
+                    break;
+                case "personalNumberChecksum":
+                    lableText += "Other Id Check No.";
+                    break;
+                case "secondRowChecksum":
+                    lableText += "Second Row Check No.";
+                    break;
+                case "expirationDateChecksum":
+                    lableText += "Expiration Check No.";
+                    break;
+                case "correctPersonalChecksum":
+                    lableText += "Correct Document check No.";
+                    break;
+                case "passportNumber":
+                    lableText += "Document No.";
+                    break;
+                case "correctExpirationChecksum":
+                    lableText += "Correct Expiration Check No.";
+                    break;
+                case "sex":
+                    lableText += "Sex";
+                    break;
+                case "birth":
+                    lableText += "Date Of Birth";
+                    break;
+                case "birthChecksum":
+                    lableText += "Birth Check No.";
+                    break;
+                case "personalNumber2":
+                    lableText += "Other ID2";
+                    break;
+                case "correctPassportChecksum":
+                    lableText += "Correct Document check No.";
+                    break;
+                case "placeOfIssue":
+                    lableText += "Place Of Issue";
+                    break;
+                case "nationality":
+                    lableText += "Nationality";
+                    break;
+                case "passportNumberChecksum":
+                    lableText += "Document check No.";
+                    break;
+                case "issueDate":
+                    lableText += "Date Of Issue";
+                    break;
+                case "departmentNumber":
+                    lableText += "Department No.";
+                    break;
+                case "signature":
+                    lableText += "Signature";
+                    break;
+                default:
+                    lableText += key;
+                    break;
+            }
+            return lableText;
         }
 
         public static String getResultType(string type)
@@ -543,7 +639,7 @@ namespace accurascan
                 'setGlarePercentage_0' : -1,
                 'setGlarePercentage_1' : -1,
                 'isSaveImage' : true,
-                'liveness_url' : 'https://api2.accurascan.com:8001/upload.php',
+                'liveness_url' : 'your liveness url',
                 'contentType' : 'form_data',
                 'feedBackLowLightMessage' : 'Low light detected',
                 'feedbackLowLightTolerence' : 39,

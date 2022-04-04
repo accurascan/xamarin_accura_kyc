@@ -43,15 +43,20 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>/Users/anilchudasama/Documents/ReactNative/Xamarin/XamarinAccuraKyc/accurascankey</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>accurascan</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>key0</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>accurascan</AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mono.Android" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors" />
+    <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
@@ -136,8 +141,12 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\accuraactiveliveness.license" />
+    <AndroidAsset Include="Assets\accuraface.license" />
+    <AndroidAsset Include="Assets\key.license" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\accurascan\accurascan.csproj">
-      <Project>{E5AB38FC-56B4-463D-B6BD-C8F11E5F409C}</Project>
       <Name>accurascan</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccuraAndroidBinding\AccuraAndroidBinding.csproj">
@@ -146,11 +155,6 @@
     <ProjectReference Include="..\AccuraAndroidFinalBinding\AccuraAndroidFinalBinding.csproj">
       <Name>AccuraAndroidFinalBinding</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\accuraactiveliveness.license" />
-    <AndroidAsset Include="Assets\accuraface.license" />
-    <AndroidAsset Include="Assets\key.license" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
